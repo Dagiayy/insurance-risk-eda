@@ -10,3 +10,10 @@ df['TransactionMonth'] = pd.to_datetime(df['TransactionMonth'], errors='coerce')
 # Check data types
 print("Data Types:")
 print(df.dtypes)
+
+# Descriptive stats for numeric features
+num_cols = ['TotalPremium','TotalClaims','SumInsured','CustomValueEstimate']
+print(df[num_cols].describe())
+
+# Check missing values
+print(df[num_cols + ['Province','VehicleType','Gender']].isna().sum())
