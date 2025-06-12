@@ -1,76 +1,113 @@
-# 🚗 Insurance Risk & Profitability Analysis
-
-This project performs **Exploratory Data Analysis (EDA)**, **statistical modeling**, and **machine learning** on historical insurance data provided by AlphaCare Insurance Solutions. The primary goal is to uncover patterns in **risk**, **claim behavior**, and **profitability**, and to propose **data-driven recommendations** to improve policy and premium strategies.
+Here’s a well-structured `README.md` for **Task 1** — the Exploratory Data Analysis (EDA) of the machine learning insurance dataset:
 
 ---
 
-## 📦 Dataset Overview
+# Task 1 - Exploratory Data Analysis (EDA)
 
-- **Time Period:** February 2014 – August 2015  
-- **Dataset Location:** `data/insurance_data.csv`  
-- **Rows:** Individual insurance policies  
-- **Columns include:**
-  - **Client Details:** Gender, Marital Status, Citizenship, etc.
-  - **Location Info:** Province, PostalCode, SubCrestaZone, etc.
-  - **Vehicle Info:** Make, Model, Year, Power, Type, etc.
-  - **Plan Info:** Premiums, SumInsured, CoverType, etc.
-  - **Payments & Claims:** TotalPremium, TotalClaims
+This project performs a comprehensive Exploratory Data Analysis (EDA) on a pipe-separated insurance dataset (`MachineLearningRating_v3.txt`) using Python and key libraries like Pandas, Matplotlib, and Seaborn. The objective is to uncover insights about insurance claims, premiums, customer and vehicle demographics, and data quality.
 
 ---
 
-## 📊 Tasks Breakdown
+## 📁 Project Structure
 
-### 1. Git & GitHub Setup
-- Git repository with CI/CD using GitHub Actions
-- Branching strategy (`task-1`, `main`)
-- Regular descriptive commits
-
-### 2. Exploratory Data Analysis (EDA)
-- Descriptive statistics
-- Univariate & bivariate plots
-- Loss Ratio analysis across gender, province, and vehicle type
-- Outlier detection (box plots)
-- Trends over time and geography
-
-### 3. A/B Hypothesis Testing
-Testing the following null hypotheses:
-- No risk differences across provinces or zipcodes
-- No significant margin (profit) differences between zipcodes
-- No significant risk difference between genders
-
-### 4. Statistical & Machine Learning Modeling
-- Linear regression per ZipCode to predict **TotalClaims**
-- ML model to predict **optimal premium values** using:
-  - Vehicle features
-  - Owner demographics
-  - Location-based features
-- Feature importance analysis
+```
+.
+├── data/
+│   └── MachineLearningRating_v3.txt      # Input dataset (pipe-separated)
+├── notebooks/
+│   └── plots/                            # All generated visualizations
+├── results/
+│   └── eda_results.txt                   # Text summary of key EDA findings
+├── task1_eda.py                          # Main Python script for EDA
+└── README.md                             # This file
+```
 
 ---
 
-## 🛠 Technologies Used
+## ⚙️ Features of the Analysis
 
-- **Language:** Python 3.10+
-- **Libraries:**  
-  - `pandas`, `numpy`, `matplotlib`, `seaborn`, `scikit-learn`, `statsmodels`
-- **CI/CD:** GitHub Actions
-- **Version Control:** Git + GitHub
+* **Data Cleaning & Imputation**
+
+  * Converts date columns to datetime
+  * Fills missing values in key fields like `TotalClaims`, `CustomValueEstimate`, `Gender`, and `Province`
+
+* **Descriptive Statistics**
+
+  * Summary of numerical columns
+  * Missing value counts
+  * Duplicate check on `UnderwrittenCoverID`
+
+* **Univariate Analysis**
+
+  * Histograms for numerical columns
+  * Bar charts for categorical columns
+
+* **Loss Ratio Analysis**
+
+  * Calculates `LossRatio = TotalClaims / TotalPremium`
+  * Analyzes by `make` and `CoverType`
+
+* **Correlation Matrix**
+
+  * Heatmap of correlations among key numeric variables
+
+* **Outlier Detection**
+
+  * Boxplots and counts of outliers for `TotalPremium` and `CustomValueEstimate`
+
+* **Claim Behavior Analysis**
+
+  * Monthly claim frequency and severity
+  * Top vehicle makes with highest and lowest average claim amounts
+
+* **Insightful Visualizations**
+
+  * TotalPremium by `CoverType`
+  * TotalPremium by vehicle `make`
+  * Temporal trend of average premium
 
 ---
 
-## 🧪 How to Run the Project
+## 📊 Output
+
+* **Visualizations** (in `notebooks/plots/`):
+
+  * Histograms, bar charts, boxplots
+  * Scatter plots and heatmaps
+  * Time-series line charts
+
+* **EDA Report** (in `results/eda_results.txt`):
+
+  * Cleaned data summary
+  * Descriptive stats, loss ratios, top trends, and outliers
+
+---
+
+## ✅ How to Run
+
+1. Place your dataset at `data/MachineLearningRating_v3.txt`
+2. Run the script:
+
+   ```bash
+   python task1_eda.py
+   ```
+
+---
+
+## 🧰 Requirements
+
+Make sure the following Python packages are installed:
 
 ```bash
-# Clone the repo
-git clone https://github.com/Dagiayy/insurance-risk-eda.git
-cd insurance-risk-eda
+pip install pandas numpy matplotlib seaborn
+```
 
-# Activate virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows use: venv\Scripts\activate
+---
 
-# Install dependencies
-pip install -r requirements.txt
+## 📌 Notes
 
-# Run EDA summary script
-python eda/eda_summary.py
+* If the dataset is missing, the script will exit with a message.
+* All plots are saved in `notebooks/plots/`
+* The summary report is saved in `results/eda_results.txt`
+
+---
