@@ -44,3 +44,27 @@ df['TotalPremium'] = df['TotalPremium'].fillna(df['TotalPremium'].median())
 df['TotalClaims'] = df['TotalClaims'].fillna(0)  # Assume no claim if missing
 df['Gender'] = df['Gender'].fillna('Unknown')
 df['Province'] = df['Province'].fillna('Unknown')
+
+
+# Univariate analysis
+# Histograms for numerical columns
+for col in numerical_cols:
+    plt.figure(figsize=(8, 5))
+    sns.histplot(df[col].dropna(), bins=30, kde=True, color='skyblue')
+    plt.title(f'Distribution of {col}')
+    plt.xlabel(col)
+    plt.ylabel('Frequency')
+    plt.savefig(f'notebooks/plots/hist_{col}.png')
+    plt.close()
+
+# Bar charts for categorical columns
+categorical_cols = ['Province', 'VehicleType', 'Gender', 'CoverType']
+for col in categorical_cols:
+    plt.figure(figsize=(10, 5))
+    sns.countplot(data=df, x=col, palette='viridis')
+    plt.title(f'Distribution of {col}')
+    plt.xticks(rotation=45)
+    plt.ylabel('Count')
+    plt.tight_layout()
+    plt.savefig(f'notebooks/plots/bar_{col}.png')
+    plt.close()
