@@ -8,11 +8,11 @@ from pathlib import Path
 sns.set(style="whitegrid")
 
 # Create plots directory
-Path('notebooks/plots').mkdir(parents=True, exist_ok=True)
+Path('../notebooks/plots').mkdir(parents=True, exist_ok=True)
 
 # Load dataset (replace with actual path)
 try:
-    df = pd.read_csv('data/insurance_data.csv')
+    df = pd.read_csv('../data/insurance_data.csv')
 except FileNotFoundError:
     print("Dataset not found. Please provide insurance_data.csv")
     exit(1)
