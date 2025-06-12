@@ -137,3 +137,11 @@ print("\nClaim Frequency by Month:")
 print(claim_freq)
 print("\nClaim Severity by Month:")
 print(claim_severity)
+
+
+# Average TotalClaims by Make (for policies with claims)
+claims_by_make = df[df['TotalClaims'] > 0].groupby('Make')['TotalClaims'].mean().sort_values()
+print("\nTop 5 Makes with Highest Claim Amounts:")
+print(claims_by_make.tail(5))
+print("\nTop 5 Makes with Lowest Claim Amounts:")
+print(claims_by_make.head(5))
