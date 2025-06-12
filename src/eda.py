@@ -68,3 +68,32 @@ for col in categorical_cols:
     plt.tight_layout()
     plt.savefig(f'notebooks/plots/bar_{col}.png')
     plt.close()
+
+
+# Calculate Loss Ratio
+df['LossRatio'] = df['TotalClaims'] / df['TotalPremium'].replace(0, 1e-10)  # Avoid division by zero
+
+# Loss Ratio by Province, VehicleType, Gender
+for group in ['Province', 'VehicleType', 'Gender']:
+    print(f"\nLoss Ratio by {group}:")
+    print(df.groupby(group)['LossRatio'].mean().sort_values())
+
+# Correlation matrix
+plt.figure(figsize=(10, 8))
+sns.heatmap(df[numerical_cols].corr(), annot=True, cmap='coolwarm', vmin=-1, vmax=1)
+plt.title('Correlation Matrix of Numerical Features')
+plt.savefig('notebooks/plots/correlation_matrix.png')
+plt.close()
+
+# Scatter plot: TotalPremium vs TotalClaims by PostalCode (top 5)
+top_zips = df['PostalCode'].value_counts().index[:5]
+plt.figure(figsize=(10, 6))
+for zipcode in top_zips:
+    subset = df[df['PostalCode'] == zipcode]
+    plt.scatter(subset['TotalPremium'], subset['TotalClaims'], label=zipcode, alpha=0.6)
+plt.xlabel('Total Premium (Rand)')
+plt.ylabel('Total Claims (Rand)')
+plt.title('Total Premium vs Total Claims by PostalCode')
+plt.legend()
+plt.savefig('notebooks/plots/scatter_premium_claims_zip.png')
+plt.close()
