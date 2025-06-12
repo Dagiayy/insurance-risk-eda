@@ -1,6 +1,3 @@
-Here’s a well-structured `README.md` for **Task 1** — the Exploratory Data Analysis (EDA) of the machine learning insurance dataset:
-
----
 
 # Task 1 - Exploratory Data Analysis (EDA)
 
