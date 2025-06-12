@@ -109,3 +109,20 @@ print("\nTop Vehicle Makes by Province:")
 for province in df['Province'].unique():
     top_makes = df[df['Province'] == province]['Make'].value_counts().head(3)
     print(f"{province}: {top_makes}")
+
+
+# Box plots for outlier detection
+for col in ['TotalClaims', 'CustomValueEstimate']:
+    plt.figure(figsize=(8, 5))
+    sns.boxplot(x=df[col], color='lightcoral')
+    plt.title(f'Box Plot of {col}')
+    plt.savefig(f'notebooks/plots/box_{col}.png')
+    plt.close()
+
+# Identify outliers (IQR method)
+for col in ['TotalClaims', 'CustomValueEstimate']:
+    Q1 = df[col].quantile(0.25)
+    Q3 = df[col].quantile(0.75)
+    IQR = Q3 - Q1
+    outliers = df[(df[col] < Q1 - 1.5 * IQR) | (df[col] > Q3 + 1.5 * IQR)][col]
+    print(f"\nOutliers in {col}: {len(outliers)}")
