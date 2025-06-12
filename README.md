@@ -86,7 +86,7 @@ This project performs a comprehensive Exploratory Data Analysis (EDA) on a pipe-
 2. Run the script:
 
    ```bash
-   python task1_eda.py
+   python eda/eda_summary.py
    ```
 
 ---
