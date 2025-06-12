@@ -145,3 +145,52 @@ print("\nTop 5 Makes with Highest Claim Amounts:")
 print(claims_by_make.tail(5))
 print("\nTop 5 Makes with Lowest Claim Amounts:")
 print(claims_by_make.head(5))
+
+
+
+# Visualization 1: Loss Ratio by Province
+plt.figure(figsize=(10, 6))
+loss_by_province = df.groupby('Province')['LossRatio'].mean().sort_values()
+sns.barplot(x=loss_by_province.index, y=loss_by_province.values, palette='magma')
+plt.title('Average Loss Ratio by Province', fontsize=14)
+plt.xlabel('Province', fontsize=12)
+plt.ylabel('Loss Ratio (Claims/Premium)', fontsize=12)
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig('notebooks/plots/loss_ratio_province.png')
+plt.close()
+
+
+# Visualization 2: Claim Severity by Vehicle Make (Top 10)
+top_makes = df['Make'].value_counts().index[:10]
+claims_by_make = df[df['TotalClaims'] > 0][df['Make'].isin(top_makes)]
+plt.figure(figsize=(12, 6))
+sns.boxplot(x='Make', y='TotalClaims', data=claims_by_make, palette='Set2')
+plt.title('Claim Severity by Vehicle Make (Top 10)', fontsize=14)
+plt.xlabel('Vehicle Make', fontsize=12)
+plt.ylabel('Total Claims (Rand)', fontsize=12)
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig('notebooks/plots/claim_severity_make.png')
+plt.close()
+
+
+
+# Visualization 3: Temporal Trend of Claim Frequency and Severity
+fig, ax1 = plt.subplots(figsize=(10, 6))
+ax1.plot(claim_freq.index, claim_freq.values, marker='o', color='blue', label='Claim Frequency')
+ax1.set_xlabel('Transaction Month', fontsize=12)
+ax1.set_ylabel('Claim Frequency', color='blue', fontsize=12)
+ax1.tick_params(axis='y', labelcolor='blue')
+ax1.set_xticklabels(claim_freq.index, rotation=45)
+
+ax2 = ax1.twinx()
+ax2.plot(claim_severity.index, claim_severity.values, marker='s', color='red', label='Claim Severity')
+ax2.set_ylabel('Claim Severity (Rand)', color='red', fontsize=12)
+ax2.tick_params(axis='y', labelcolor='red')
+
+plt.title('Claim Frequency and Severity Over Time', fontsize=14)
+fig.legend(loc='upper center', bbox_to_anchor=(0.5, -0.05), ncol=2)
+plt.tight_layout()
+plt.savefig('notebooks/plots/temporal_trends.png')
+plt.close()
