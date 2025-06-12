@@ -30,3 +30,17 @@ numerical_cols = ['TotalPremium', 'TotalClaims', 'SumInsured', 'CustomValueEstim
 # Descriptive statistics
 print("\nDescriptive Statistics:")
 print(df[numerical_cols].describe())
+
+
+# Missing values
+print("\nMissing Values:")
+print(df.isnull().sum())
+
+# Check duplicates in UnderwrittenCoverID
+print("\nDuplicate UnderwrittenCoverID:", df['UnderwrittenCoverID'].duplicated().sum())
+
+# Basic imputation (to be refined after data inspection)
+df['TotalPremium'] = df['TotalPremium'].fillna(df['TotalPremium'].median())
+df['TotalClaims'] = df['TotalClaims'].fillna(0)  # Assume no claim if missing
+df['Gender'] = df['Gender'].fillna('Unknown')
+df['Province'] = df['Province'].fillna('Unknown')
