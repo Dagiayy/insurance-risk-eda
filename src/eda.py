@@ -23,3 +23,10 @@ df['TransactionMonth'] = pd.to_datetime(df['TransactionMonth'], errors='coerce')
 # Check data types
 print("Data Types:")
 print(df.dtypes)
+
+# Numerical columns for analysis
+numerical_cols = ['TotalPremium', 'TotalClaims', 'SumInsured', 'CustomValueEstimate', 'Cubiccapacity', 'Kilowatts']
+
+# Descriptive statistics
+print("\nDescriptive Statistics:")
+print(df[numerical_cols].describe())
