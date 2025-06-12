@@ -126,3 +126,14 @@ for col in ['TotalClaims', 'CustomValueEstimate']:
     IQR = Q3 - Q1
     outliers = df[(df[col] < Q1 - 1.5 * IQR) | (df[col] > Q3 + 1.5 * IQR)][col]
     print(f"\nOutliers in {col}: {len(outliers)}")
+
+
+# Claim frequency (proportion of policies with claims)
+claim_freq = df.groupby('TransactionMonth').apply(lambda x: (x['TotalClaims'] > 0).mean())
+# Claim severity (average claim amount where claims > 0)
+claim_severity = df[df['TotalClaims'] > 0].groupby('TransactionMonth')['TotalClaims'].mean()
+
+print("\nClaim Frequency by Month:")
+print(claim_freq)
+print("\nClaim Severity by Month:")
+print(claim_severity)
