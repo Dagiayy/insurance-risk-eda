@@ -97,3 +97,15 @@ plt.title('Total Premium vs Total Claims by PostalCode')
 plt.legend()
 plt.savefig('notebooks/plots/scatter_premium_claims_zip.png')
 plt.close()
+
+
+# Average TotalPremium by Province and CoverType
+premium_by_province_cover = df.groupby(['Province', 'CoverType'])['TotalPremium'].mean().unstack()
+print("\nAverage TotalPremium by Province and CoverType:")
+print(premium_by_province_cover)
+
+# Top vehicle makes by Province
+print("\nTop Vehicle Makes by Province:")
+for province in df['Province'].unique():
+    top_makes = df[df['Province'] == province]['Make'].value_counts().head(3)
+    print(f"{province}: {top_makes}")
