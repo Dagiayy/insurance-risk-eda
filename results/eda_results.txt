@@ -1,0 +1,371 @@
+
+=== Data Types ===
+UnderwrittenCoverID                  int64
+PolicyID                             int64
+TransactionMonth            datetime64[ns]
+IsVATRegistered                       bool
+Citizenship                         object
+LegalType                           object
+Title                               object
+Language                            object
+Bank                                object
+AccountType                         object
+MaritalStatus                       object
+Gender                              object
+Country                             object
+Province                            object
+PostalCode                           int64
+MainCrestaZone                      object
+SubCrestaZone                       object
+ItemType                            object
+mmcode                             float64
+VehicleType                         object
+RegistrationYear                     int64
+make                                object
+Model                               object
+Cylinders                          float64
+cubiccapacity                      float64
+kilowatts                          float64
+bodytype                            object
+NumberOfDoors                      float64
+VehicleIntroDate                    object
+CustomValueEstimate                float64
+AlarmImmobiliser                    object
+TrackingDevice                      object
+CapitalOutstanding                  object
+NewVehicle                          object
+WrittenOff                          object
+Rebuilt                             object
+Converted                           object
+CrossBorder                         object
+NumberOfVehiclesInFleet            float64
+SumInsured                         float64
+TermFrequency                       object
+CalculatedPremiumPerTerm           float64
+ExcessSelected                      object
+CoverCategory                       object
+CoverType                           object
+CoverGroup                          object
+Section                             object
+Product                             object
+StatutoryClass                      object
+StatutoryRiskType                   object
+TotalPremium                       float64
+TotalClaims                        float64
+dtype: object
+
+=== Descriptive Statistics ===
+       TotalPremium   TotalClaims    SumInsured  CustomValueEstimate  cubiccapacity      kilowatts  NumberOfDoors      Cylinders
+count  1.000098e+06  1.000098e+06  1.000098e+06         2.204560e+05  999546.000000  999546.000000  999546.000000  999546.000000
+mean   6.190550e+01  6.486119e+01  6.041727e+05         2.255311e+05    2466.743258      97.207919       4.019250       4.046642
+std    2.302845e+02  2.384075e+03  1.508332e+06         5.645157e+05     442.800640      19.393256       0.468314       0.294020
+min   -7.825768e+02 -1.200241e+04  1.000000e-02         2.000000e+04       0.000000       0.000000       0.000000       0.000000
+25%    0.000000e+00  0.000000e+00  5.000000e+03         1.350000e+05    2237.000000      75.000000       4.000000       4.000000
+50%    2.178333e+00  0.000000e+00  7.500000e+03         2.200000e+05    2694.000000     111.000000       4.000000       4.000000
+75%    2.192982e+01  0.000000e+00  2.500000e+05         2.800000e+05    2694.000000     111.000000       4.000000       4.000000
+max    6.528260e+04  3.930921e+05  1.263620e+07         2.655000e+07   12880.000000     309.000000       6.000000      10.000000
+
+=== Missing Values ===
+UnderwrittenCoverID               0
+PolicyID                          0
+TransactionMonth                  0
+IsVATRegistered                   0
+Citizenship                       0
+LegalType                         0
+Title                             0
+Language                          0
+Bank                         145961
+AccountType                   40232
+MaritalStatus                  8259
+Gender                         9536
+Country                           0
+Province                          0
+PostalCode                        0
+MainCrestaZone                    0
+SubCrestaZone                     0
+ItemType                          0
+mmcode                          552
+VehicleType                     552
+RegistrationYear                  0
+make                            552
+Model                           552
+Cylinders                       552
+cubiccapacity                   552
+kilowatts                       552
+bodytype                        552
+NumberOfDoors                   552
+VehicleIntroDate                552
+CustomValueEstimate          779642
+AlarmImmobiliser                  0
+TrackingDevice                    0
+CapitalOutstanding                2
+NewVehicle                   153295
+WrittenOff                   641901
+Rebuilt                      641901
+Converted                    641901
+CrossBorder                  999400
+NumberOfVehiclesInFleet     1000098
+SumInsured                        0
+TermFrequency                     0
+CalculatedPremiumPerTerm          0
+ExcessSelected                    0
+CoverCategory                     0
+CoverType                         0
+CoverGroup                        0
+Section                           0
+Product                           0
+StatutoryClass                    0
+StatutoryRiskType                 0
+TotalPremium                      0
+TotalClaims                       0
+
+=== Duplicate UnderwrittenCoverID ===
+Total Duplicates: 883566
+
+=== Univariate Analysis: Numerical Variables ===
+
+=== Univariate Analysis: Categorical Variables ===
+
+=== Loss Ratio Analysis ===
+
+Loss Ratio by make:
+make
+CITROEN                                0.000000e+00
+CHERY                                  0.000000e+00
+FORD                                   0.000000e+00
+DAIHATSU                               0.000000e+00
+GEELY                                  0.000000e+00
+HINO                                   0.000000e+00
+HUMMER                                 0.000000e+00
+HONDA                                  0.000000e+00
+JINBEI                                 0.000000e+00
+KIA                                    0.000000e+00
+LEXUS                                  0.000000e+00
+MAHINDRA                               0.000000e+00
+PROTON                                 0.000000e+00
+RENAULT                                0.000000e+00
+PEUGEOT                                0.000000e+00
+OPEL                                   0.000000e+00
+TATA                                   0.000000e+00
+VOLVO                                  0.000000e+00
+SCANIA                                 0.000000e+00
+FOTON                                  7.026816e-03
+MAZDA                                  4.553266e-02
+NISSAN                                 7.450584e-02
+NISSAN/DATSUN                          1.646593e-01
+FORD                                   2.179054e-01
+B.A.W                                  2.472852e-01
+GOLDEN JOURNEY                         2.958288e-01
+MERCEDES-BENZ                          3.136039e-01
+POLARSUN                               3.676202e-01
+FIAT                                   4.040575e-01
+HYUNDAI                                4.491353e-01
+JMC                                    4.733863e-01
+SAIC                                   1.169047e+00
+MITSUBISHI                             8.988392e+00
+BMW                                    9.873989e+08
+AUDI                                   3.097201e+09
+TOYOTA                                 7.289880e+09
+IVECO                                  8.578963e+09
+MERCEDES-BENZ                          9.959825e+09
+TOYOTA                                 2.893371e+10
+C.A.M                                  3.429141e+10
+JINBEI                                 3.873522e+10
+CMC                                    4.580544e+10
+SUZUKI                                 5.622786e+10
+VOLKSWAGEN                             8.384654e+10
+CHEVROLET                              9.015870e+10
+MARCOPOLO                              1.567948e+12
+
+Loss Ratio by CoverType:
+CoverType
+Keys and Alarms                                       -6.907096e+07
+Emergency Charges                                     -2.503027e+07
+Accidental Death                                       0.000000e+00
+Asset Value Preserver                                  0.000000e+00
+Cash Takings                                           0.000000e+00
+Cleaning and Removal of Accident Debris                0.000000e+00
+Baggage/Luggage                                        0.000000e+00
+Basic Excess Waiver                                    0.000000e+00
+Passenger Liability                                    0.000000e+00
+Fire and Theft                                         0.000000e+00
+Standalone passenger liability                         0.000000e+00
+Signage and Vehicle Wraps                              0.000000e+00
+Trailer                                                0.000000e+00
+Third Party Only                                       0.000000e+00
+Credit Protection                                      1.790252e-01
+Deposit Cover                                          3.079292e-01
+Roadside Assistance                                    7.352886e+09
+Third Party                                            7.535689e+09
+Windscreen                                             8.477538e+09
+Income Protector                                       2.456460e+10
+Own Damage                                             2.348621e+11
+Factory Fitted Sound and Other Electronic Equipment    7.031579e+13
+
+=== Correlation Matrix ===
+
+=== Scatter Plot: TotalPremium vs TotalClaims by PostalCode ===
+
+=== Average TotalPremium by MainCrestaZone and CoverType ===
+CoverType                                    Accidental Death  Asset Value Preserver  Baggage/Luggage  Basic Excess Waiver  Cash Takings  Cleaning and Removal of Accident Debris  Credit Protection  Deposit Cover  Emergency Charges  Factory Fitted Sound and Other Electronic Equipment  Fire and Theft  Income Protector  Keys and Alarms  Own Damage  Passenger Liability  Roadside Assistance  Signage and Vehicle Wraps  Standalone passenger liability  Third Party  Third Party Only    Trailer  Windscreen
+MainCrestaZone                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+Cape Province                                       22.761878              52.631579              NaN            44.374252           NaN                                 2.353316         152.297555      45.011519           2.353316                                                  NaN             NaN         44.246856         1.568863  267.132132             0.784456             0.000000                   0.784456                       43.859649   105.881439               NaN        NaN   11.470147
+Cape Province (Cape Town)                           23.831164              17.009173              NaN            43.797783      8.225741                                 2.951021         101.327924      38.929848           2.951021                                                  NaN      230.813659         34.965925         1.966371  357.557858             0.983634             8.593865                   0.983695                       38.600535   112.290918               NaN   6.607055   10.828532
+Cape Province (East and North of Cape Town)         27.659602                    NaN              NaN            47.341580           NaN                                 3.399950          92.656099      36.039712           3.399950                                                  0.0             NaN         43.021697         2.266611  382.658204             1.133343            15.618713                   1.131116                       43.859649   131.428175               NaN        NaN   11.984780
+Ciskei, Cape Mid 1                                  31.962952                    NaN              NaN            50.300926           NaN                                 4.316732         168.355966      97.503374           4.316732                                                  NaN             NaN         50.596295         2.877784  495.423913             1.438945                  NaN                   1.438945                             NaN   159.558028               NaN        NaN   14.862713
+East London                                         33.142070                    NaN         3.156834            52.709394           NaN                                 3.862019         190.213102            NaN           3.862019                                                  NaN             NaN         44.410904         2.574659  573.173473             1.287362                  NaN                   1.287362                             NaN   146.250693               NaN        NaN   15.199706
+Johannesburg                                        38.252258              27.706179        19.025458            50.964438     12.585812                                 3.155806          81.661545      54.824561           3.158971                                                  NaN      137.863921         49.637180         2.105689  369.543712            11.280337             9.312297                   1.052861                       26.315789   117.952862               NaN        NaN   13.587772
+Karoo 1 (Northeast of Cape Town)                    30.922300              11.029247         3.472758            45.094298     26.315789                                 3.006723         121.530461      55.143969           3.006723                                                  NaN       21.702769         52.973990         2.004463  304.138146             1.002263             8.391700                   1.002263                       41.737408   121.493551               NaN        NaN   10.599965
+Langkloof, Coast 2, Coast 1                         26.388675                    NaN              NaN            35.305107           NaN                                 2.664687          70.529404            NaN           2.664687                                                  NaN             NaN         40.607708         1.776438  311.927719             0.888242                  NaN                   0.888242                       43.859649   110.413321        106.324278  32.816162    9.371757
+Natal                                               26.794947              32.672407              NaN            45.624757           NaN                                 3.735032         135.003995      67.618140           3.735032                                                  NaN      166.566404         47.969492         2.488719  453.029698             1.245040             4.299966                   1.245040                       41.548717   164.558632               NaN        NaN   13.064068
+Natal (Durban)                                      29.801440               0.000000              NaN            51.445290     17.543860                                 3.742015         164.013307      44.810619           3.742015                                                  0.0             NaN         50.490205         2.495112  487.812580             1.247367             4.686852                   1.247339                             NaN   172.265501               NaN        NaN   14.107082
+Oranje Free State                                   30.206507                    NaN              NaN            55.887370           NaN                                 3.386178         151.551776      52.575349           3.386178                                                  NaN             NaN         52.221615         2.257430  364.879628             1.128752            17.036880                   1.128752                       43.859649   157.182315               NaN        NaN   14.843381
+Port Elizabeth                                      18.893340              52.631579              NaN            35.356700           NaN                                 2.381548          91.332302            NaN           2.381548                                                  NaN             NaN         32.113236         1.587685  319.342597             0.793867                  NaN                   0.793867                             NaN    98.539181               NaN        NaN    8.974330
+Rand East                                           16.258616              25.891426              NaN            44.713461           NaN                                 2.713536          85.313266      51.398026           2.713536                                                  NaN             NaN         42.706338         1.809004  306.450113             0.904530             7.554261                   0.904530                       43.859649    99.555671               NaN        NaN   10.044482
+Tembu 2, Cape Mid 2, Cape Mid West, Tembu 1         26.114936              52.631579        15.434481            46.101669           NaN                                 3.545373         112.379577      57.013814           3.545373                                                  NaN             NaN         44.974396         2.363560  419.050293             1.181818                  NaN                   1.181818                       43.859649   140.320110               NaN        NaN   13.009913
+Transvaal (Pretoria)                                24.868306              33.922196        14.097744            50.182642           NaN                                 3.287976         102.479916      30.414073           3.287976                                                  NaN      547.718070         41.712080         2.191961  338.113327             1.096015            11.370778                   1.096015                       43.859649   128.093943        111.315789        NaN   11.774114
+Transvaal (all except Pretoria)                     30.020465              32.917088         6.805808            48.250001      0.215213                                 2.826644          94.843804      57.005721           2.826644                                                  0.0       76.032079         45.457357         1.884376  304.931040             0.942237            11.131475                   0.941873                       42.919799   126.469185               NaN        NaN   12.386422
+
+=== Top Vehicle Makes by MainCrestaZone ===
+Rand East: make
+TOYOTA           25922
+CMC               3692
+MERCEDES-BENZ     3496
+Transvaal (all except Pretoria): make
+TOYOTA           233400
+MERCEDES-BENZ     15661
+CMC                8742
+Johannesburg: make
+TOYOTA            134310
+GOLDEN JOURNEY      9704
+MERCEDES-BENZ       6632
+Natal (Durban): make
+TOYOTA           73807
+VOLKSWAGEN        3067
+MERCEDES-BENZ     2986
+Tembu 2, Cape Mid 2, Cape Mid West, Tembu 1: make
+TOYOTA                                 17613
+NISSAN/DATSUN                            780
+MERCEDES-BENZ                            391
+Transvaal (Pretoria): make
+TOYOTA           80113
+MERCEDES-BENZ     5810
+VOLKSWAGEN        4160
+Natal: make
+TOYOTA           80297
+CMC               1919
+MERCEDES-BENZ     1244
+Cape Province (Cape Town): make
+TOYOTA           83046
+MERCEDES-BENZ     2998
+NISSAN            2639
+Langkloof, Coast 2, Coast 1: make
+TOYOTA    3003
+IVECO        3
+C.A.M        2
+Cape Province (East and North of Cape Town): make
+TOYOTA           17520
+IVECO              594
+MERCEDES-BENZ      415
+Oranje Free State: make
+TOYOTA                                 6616
+NISSAN/DATSUN                           572
+MERCEDES-BENZ                           205
+East London: make
+TOYOTA    3745
+B.A.W      135
+SAIC        81
+Port Elizabeth: make
+TOYOTA                                 1672
+NISSAN/DATSUN                           110
+Ciskei, Cape Mid 1: make
+TOYOTA        2046
+CMC            190
+VOLKSWAGEN      99
+Cape Province: make
+TOYOTA    4928
+CMC        863
+AUDI       321
+Karoo 1 (Northeast of Cape Town): make
+TOYOTA           45242
+MERCEDES-BENZ     1906
+IVECO             1107
+
+=== Outlier Detection ===
+
+Outliers in TotalPremium: 209042
+
+Outliers in CustomValueEstimate: 217880
+
+=== Claim Frequency by Month ===
+TransactionMonth
+2013-10-01    0.000000
+2013-11-01    0.001672
+2013-12-01    0.002007
+2014-01-01    0.001095
+2014-02-01    0.002910
+2014-03-01    0.003462
+2014-04-01    0.002891
+2014-05-01    0.002952
+2014-06-01    0.002368
+2014-07-01    0.001811
+2014-08-01    0.002599
+2014-09-01    0.001847
+2014-10-01    0.002750
+2014-11-01    0.003710
+2014-12-01    0.003298
+2015-01-01    0.003493
+2015-02-01    0.003450
+2015-03-01    0.003576
+2015-04-01    0.003521
+2015-05-01    0.002973
+2015-06-01    0.002895
+2015-07-01    0.002506
+2015-08-01    0.000206
+
+=== Claim Severity by Month ===
+TransactionMonth
+2013-11-01    25292.539474
+2013-12-01     3094.461988
+2014-01-01     6218.429825
+2014-02-01    10498.217836
+2014-03-01    26898.751798
+2014-04-01    15343.179605
+2014-05-01    18513.253095
+2014-06-01    18019.157018
+2014-07-01    15911.766699
+2014-08-01    13831.806330
+2014-09-01    19054.024346
+2014-10-01    18975.194895
+2014-11-01    21196.900015
+2014-12-01    30278.995646
+2015-01-01    21978.094542
+2015-02-01    21838.511860
+2015-03-01    22720.308149
+2015-04-01    26696.544977
+2015-05-01    23444.814344
+2015-06-01    20889.500410
+2015-07-01    25866.722121
+2015-08-01    46355.405104
+
+=== Top 5 Makes with Highest Claim Amounts ===
+make
+MERCEDES-BENZ                           34079.340852
+GOLDEN JOURNEY                          46169.723522
+B.A.W                                   47856.245614
+HYUNDAI                                 56663.492325
+POLARSUN                               125197.843333
+
+=== Top 5 Makes with Lowest Claim Amounts ===
+make
+FORD                                   2040.473684
+MITSUBISHI                             2378.596491
+MARCOPOLO                              7996.535088
+CHEVROLET                              8222.473684
+TOYOTA                                 8969.587719
+
+=== Visualization: Average TotalPremium by CoverType ===
+
+=== Visualization: TotalPremium by Vehicle Make ===
+
+=== Visualization: Temporal Trend of TotalPremium ===
