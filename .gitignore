@@ -3,6 +3,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+.dvc/cache/ # DVC cache
+
 # C extensions
 *.so
 data/
