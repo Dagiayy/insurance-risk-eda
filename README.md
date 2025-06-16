@@ -1,11 +1,20 @@
-ACIS Insurance Analytics
 
-Overview
+---
 
-This repository supports AlphaCare Insurance Solutions (ACIS) in optimizing car insurance marketing and pricing strategies in South Africa. The project analyzes historical insurance claim data (Feb 2014 - Aug 2015) from a pipe-separated text file (insurance_data.txt) to identify low-risk targets and refine premiums through Exploratory Data Analysis (EDA), hypothesis testing, and predictive modeling. Task 1 established version control and EDA, while Task 2 implements Data Version Control (DVC) for reproducible data pipelines.
+# **ACIS Insurance Analytics**
 
-Project Structure
+This repository supports **AlphaCare Insurance Solutions (ACIS)** in optimizing car insurance marketing and pricing strategies in South Africa. The project analyzes historical insurance claim data from February 2014 to August 2015, stored in a pipe-separated text file (`insurance_data.txt`), to identify low-risk targets and refine premiums through **Exploratory Data Analysis (EDA)**, **hypothesis testing**, and **predictive modeling**.
 
+The project is structured into three key tasks:
+- **Task 1:** Git setup and Exploratory Data Analysis (EDA).
+- **Task 2:** Implementation of Data Version Control (DVC) for reproducibility.
+- **Task 3:** A/B hypothesis testing to validate risk drivers and refine pricing strategies.
+
+---
+
+## **Project Structure**
+
+```
 ACIS-Insurance-Analytics/
 ├── .dvc/
 │   ├── config                  # DVC configuration
@@ -14,322 +23,175 @@ ACIS-Insurance-Analytics/
 │   └── workflows/
 │       └── ci.yml              # GitHub Actions CI/CD configuration
 ├── data/
-│   ├── insurance_data.txt      # Pipe-separated dataset (tracked by DVC)
-│   ├── insurance_data.txt.dvc  # DVC metadata
-│   └── .gitignore              # Ignore dataset in Git
+│   ├── insurance_data.txt      # Raw dataset (DVC-tracked)
+│   ├── insurance_data_cleaned.txt  # Cleaned dataset (DVC-tracked)
+│   ├── *.dvc                   # DVC metadata
+│   └── .gitignore              # Ignore datasets in Git
 ├── src/
-│   ├── eda.py                  # EDA script for Task 1
-│   └── test_data.py            # Unit tests for data loading
+│   ├── eda.py                  # EDA script
+│   ├── preprocess_data.py      # Data cleaning script
+│   ├── test_data.py            # Unit tests
+│   └── hypothesis_testing.py   # Hypothesis testing script
 ├── notebooks/
-│   └── plots/                  # Directory for EDA visualizations
-│       ├── hist_*.png          # Histograms for numerical variables
-│       ├── bar_*.png           # Bar charts for categorical variables
-│       ├── box_*.png           # Box plots for outlier detection
-│       ├── correlation_matrix.png
-│       ├── scatter_premium_claims_zip.png
-│       ├── premium_by_covertype.png
-│       ├── premium_by_make.png
-│       └── temporal_premium_trend.png
+│   └── plots/                  # EDA visualizations
 ├── docs/
-│   └── eda_summary.md          # Summary of EDA findings
-├── README.md                   # Project overview and setup instructions
-├── requirements.txt            # Python dependencies
-└── .gitignore                  # Files to ignore in Git
+│   ├── eda_summary.md          # EDA findings
+│   ├── hypothesis_testing_report.md  # Hypothesis testing results
+│   ├── hypothesis_test_results.csv   # Test results
+│   └── equivalence_check_results.csv # Equivalence checks
+├── README.md                   # Project overview
+├── requirements.txt            # Dependencies
+└── .gitignore                  # Git ignore rules
+```
 
-Setup Instructions
+---
 
+## **Setup Instructions**
 
-
-
-
-Clone the Repository:
-
+### **1. Clone the Repository**
+```bash
 git clone https://github.com/<your-username>/ACIS-Insurance-Analytics.git
 cd ACIS-Insurance-Analytics
+```
 
-
-
-Install Dependencies:
-
+### **2. Install Dependencies**
+Install the required Python packages using `pip`:
+```bash
 pip install -r requirements.txt
+```
 
-
-
-Set Up DVC:
-
-
-
-
-
-Initialize DVC (if not already done):
-
+### **3. Set Up DVC**
+Initialize DVC and configure a local remote storage for versioning datasets:
+```bash
 dvc init
-
-
-
-Configure local remote storage:
-
 mkdir -p ~/dvc_storage/ACIS-Insurance-Analytics
 dvc remote add -d localstorage ~/dvc_storage/ACIS-Insurance-Analytics
-
-
-
-Pull dataset:
-
 dvc pull
-
-
-
-Run EDA:
-
-python src/eda.py
-
-
-
-
-
-Outputs: Console logs (data types, statistics, etc.) and plots in notebooks/plots/.
-
-
-
-Run Tests:
-
-pytest src/
-
-Task 1: Git Setup and Exploratory Data Analysis
-
-Objectives
-
-
-
-
-
-Git and GitHub Setup: Initialize a Git repository, configure GitHub Actions for CI/CD, and establish a branching workflow.
-
-
-
-EDA: Perform comprehensive analysis on insurance_data.txt to understand data distributions, relationships, and trends.
-
-Deliverables
-
-
-
-
-
-Git Repository:
-
-
-
-
-
-Initialized with git init and pushed to GitHub.
-
-
-
-Configured with .gitignore to exclude data files and outputs.
-
-
-
-CI/CD pipeline (ci.yml) for linting (flake8) and testing (pytest).
-
-
-
-Branch task-1 with 16+ commits (minimum 3 per day), merged into main via PR.
-
-
-
-EDA:
-
-
-
-
-
-Script: src/eda.py loads pipe-separated data, performs summarization, quality checks, univariate/bivariate analyses, outlier detection, and visualizations.
-
-
-
-Data Summarization: Descriptive statistics for numerical features (e.g., TotalPremium, SumInsured).
-
-
-
-Data Quality: Handled missing values (e.g., median imputation for CustomValueEstimate) and duplicates (883,566 in UnderwrittenCoverID).
-
-
-
-Univariate Analysis: Histograms for numerical variables, bar charts for categorical variables (e.g., Province, CoverType).
-
-
-
-Bivariate Analysis: Loss Ratio by make and CoverType, correlation matrix, scatter plot of TotalPremium vs. TotalClaims by PostalCode.
-
-
-
-Geographic Trends: Average TotalPremium by MainCrestaZone and CoverType, top vehicle makes per zone.
-
-
-
-Outlier Detection: Identified 209,042 outliers in TotalPremium and 217,880 in CustomValueEstimate using IQR method.
-
-
-
-Temporal Trends: Claim frequency (0.000206 to 0.003710) and severity (3,094 to 46,355 Rand) by month.
-
-
-
-Vehicle Makes: Highest claim amounts for Polarsun (125,197 Rand), lowest for Ford (2,040 Rand).
-
-
-
-Visualizations:
-
-
-
-
-
-Bar plot: Average TotalPremium by CoverType.
-
-
-
-Box plot: TotalPremium by vehicle make.
-
-
-
-Line plot: Average TotalPremium over time.
-
-
-
-Documentation: docs/eda_summary.md summarizes findings and recommendations.
-
-
-
-Tests: src/test_data.py verifies data loading and column presence.
-
-Key Insights
-
-
-
-
-
-TotalPremium varies significantly by CoverType (e.g., Own Damage: high premiums, Windscreen: low).
-
-
-
-High Loss Ratios for certain makes (e.g., Marcopolo: 1.57e12) due to outlier claims.
-
-
-
-Rand East and Johannesburg have higher premiums than other zones.
-
-Task 2: Data Version Control with DVC
-
-Objectives
-
-
-
-
-
-Establish a reproducible data pipeline using DVC to version-control insurance_data.txt.
-
-
-
-Ensure data inputs are auditable for regulatory compliance in insurance.
-
-Deliverables
-
-
-
-
-
-DVC Installation:
-
-
-
-
-
-Installed via pip install dvc and added to requirements.txt.
-
-
-
-DVC Initialization:
-
-
-
-
-
-Initialized with dvc init, creating .dvc/ directory.
-
-
-
-Local Remote Storage:
-
-
-
-
-
-Configured at ~/dvc_storage/ACIS-Insurance-Analytics using dvc remote add.
-
-
-
-Data Tracking:
-
-
-
-
-
-Tracked data/insurance_data.txt with dvc add, creating insurance_data.txt.dvc.
-
-
-
-Created a second version of the dataset (e.g., added a dummy row).
-
-
-
-Version Control:
-
-
-
-
-
-Committed .dvc files and updated .gitignore to Git.
-
-
-
-Branch task-2 created with 7+ commits.
-
-
-
-Data Push:
-
-
-
-
-
-Pushed dataset versions to local remote with dvc push.
-
-Key Commands
-
-
-
-
-
-Track new data version:
-
-dvc add data/insurance_data.txt
-git add data/insurance_data.txt.dvc
-git commit -m "Updated dataset version"
-
-
-
-Push to remote:
-
+```
+
+### **4. Generate Cleaned Dataset**
+Run the data preprocessing script to clean the raw dataset:
+```bash
+python src/preprocess_data.py
+```
+Track the cleaned dataset with DVC:
+```bash
+dvc add data/insurance_data_cleaned.txt
 dvc push
+```
 
+### **5. Run Exploratory Data Analysis (EDA)**
+Generate insights and visualizations by running the EDA script:
+```bash
+python src/eda.py
+```
+Findings are documented in `docs/eda_summary.md`.
 
+### **6. Run Hypothesis Tests**
+Validate risk drivers (e.g., provinces, zip codes, gender) using the hypothesis testing script:
+```bash
+python src/hypothesis_testing.py
+```
+Results are summarized in `docs/hypothesis_testing_report.md`.
 
-Retrieve specific version:
+### **7. Run Tests**
+Ensure code quality and functionality by running unit tests:
+```bash
+pytest src/
+```
 
-git checkout <commit-hash>
-dvc pull
+---
 
+## **Task Breakdown**
 
-Final Submission: June 17, 2025, 8:00 PM UTC
+### **Task 1: Git Setup and Exploratory Data Analysis**
+**Objective:** Initialize a Git repository, configure CI/CD pipelines, and perform EDA on the raw dataset.
+
+**Deliverables:**
+- Git repository with a `task-1` branch merged into `main`.
+- EDA script (`src/eda.py`) analyzing `insurance_data.txt`.
+- Visualizations and documentation (`docs/eda_summary.md`).
+
+**Key Insights:**
+- High variability in premiums across different regions.
+- Significant outliers in claim severity.
+- Geographic trends indicating higher claim frequencies in specific provinces.
+
+---
+
+### **Task 2: Data Version Control with DVC**
+**Objective:** Establish a reproducible data pipeline using DVC.
+
+**Deliverables:**
+- DVC setup with a local remote (`~/dvc_storage/ACIS-Insurance-Analytics`).
+- Tracked datasets: `insurance_data.txt` (raw) and `insurance_data_cleaned.txt` (processed).
+- `task-2` branch with 10+ commits.
+
+**Features:**
+- Versioned datasets for auditability and reproducibility.
+- Automation of data cleaning and preprocessing steps.
+
+---
+
+### **Task 3: A/B Hypothesis Testing**
+**Objective:** Validate risk drivers (provinces, zip codes, gender) using metrics such as **Claim Frequency**, **Claim Severity**, and **Margin**.
+
+**Deliverables:**
+- Metrics: Claim Frequency, Claim Severity, Margin.
+- Segmentation: Gauteng vs. Western Cape, zip codes 2000 vs. 8000, Male vs. Female.
+- Statistical Tests: Chi-squared tests for frequency, t-tests for severity and margin.
+- Script: `src/hypothesis_testing.py` using `insurance_data_cleaned.txt`.
+- Report: `docs/hypothesis_testing_report.md` with detailed findings.
+- Branch: `task-3` with 5+ commits.
+
+**Key Findings:**
+- **Rejected H₀₁:** Gauteng has a 55% higher claim frequency, while the Western Cape has a 26% higher claim severity.
+- **Failed to Reject H₀₂, H₀₃, H₀₄:** No significant differences observed for zip codes or gender, but monitor zip code 8000 for increasing severity and negative margins.
+
+**Recommendations:**
+- Increase premiums in Gauteng by 10-15% and in the Western Cape by 5-10%.
+- Monitor zip code 8000 for potential claim severity spikes.
+- Review pricing strategies to address negative margins.
+- Maintain gender-neutral pricing due to lack of significant evidence.
+
+---
+
+## **Contributions and Collaboration**
+
+This project uses **GitHub Actions** for continuous integration and deployment (CI/CD). Contributions should follow these guidelines:
+1. Create a new branch for each task (e.g., `task-1`, `task-2`, `task-3`).
+2. Ensure all changes are tested locally before pushing to the repository.
+3. Submit pull requests with clear descriptions of the changes made.
+
+---
+
+## **Dependencies**
+
+All required dependencies are listed in `requirements.txt`. To install them, run:
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## **Future Work**
+
+- **Task 4:** Develop predictive models to forecast claim likelihood and severity.
+- **Task 5:** Integrate machine learning pipelines for automated risk assessment.
+- **Task 6:** Explore additional data sources (e.g., socioeconomic data) to enhance risk profiling.
+
+---
+
+## **License**
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
+
+## **Acknowledgments**
+
+- **Data Source:** Historical insurance claim data provided by AlphaCare Insurance Solutions.
+- **Tools Used:** Python, DVC, GitHub Actions, Pandas, Matplotlib, SciPy.
+- **Inspiration:** This project was inspired by real-world challenges in the insurance industry.
+
+---
