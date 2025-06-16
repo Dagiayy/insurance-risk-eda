@@ -73,7 +73,7 @@ logging.info(f"Selected features: {features}")
 
 # Ensure all features are numeric
 X_severity = df[df['HasClaim'] == 1][features].apply(pd.to_numeric, errors='coerce')
-y_severity = df[df['HasClaim'] == 1]['TotalClaims']
+y_severity = np.log1p(df[df['HasClaim'] == 1]['TotalClaims'])
 X_prob = df[features].apply(pd.to_numeric, errors='coerce')
 y_prob = df['HasClaim']
 
