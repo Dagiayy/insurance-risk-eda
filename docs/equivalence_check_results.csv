@@ -1,17 +1,17 @@
-Attribute,Test,p-value,Group
-VehicleType,Chi-squared,0.0,Provinces
-RegistrationYear,T-test,2.61894885413955e-52,Provinces
-CoverType,Chi-squared,0.0,Provinces
-SumInsured,T-test,0.07971320406167971,Provinces
-VehicleType,Chi-squared,7.469926582758962e-267,Zip Codes (Risk)
-RegistrationYear,T-test,0.0,Zip Codes (Risk)
-CoverType,Chi-squared,9.555003906485432e-273,Zip Codes (Risk)
-SumInsured,T-test,4.006141375619087e-13,Zip Codes (Risk)
-VehicleType,Chi-squared,7.469926582758962e-267,Zip Codes (Margin)
-RegistrationYear,T-test,0.0,Zip Codes (Margin)
-CoverType,Chi-squared,9.555003906485432e-273,Zip Codes (Margin)
-SumInsured,T-test,4.006141375619087e-13,Zip Codes (Margin)
-VehicleType,Chi-squared,8.724194607062163e-25,Gender
-RegistrationYear,T-test,0.010500464521761736,Gender
-CoverType,Chi-squared,1.6100790809244166e-63,Gender
-SumInsured,T-test,0.19137551021248841,Gender
+attribute,test,p_value,group
+VehicleType,chi-squared,0.6949182173492059,Provinces
+RegistrationYear,t-test,0.0586611641139715,Provinces
+CoverType,chi-squared,0.8717775884389585,Provinces
+SumInsured,t-test,0.49831015514224863,Provinces
+VehicleType,chi-squared,0.4949965372093349,Zip Codes (Risk)
+RegistrationYear,t-test,0.4225108136345203,Zip Codes (Risk)
+CoverType,chi-squared,0.7591729974161324,Zip Codes (Risk)
+SumInsured,t-test,0.9226991578460642,Zip Codes (Risk)
+VehicleType,chi-squared,0.4949965372093349,Zip Codes (Margin)
+RegistrationYear,t-test,0.4225108136345203,Zip Codes (Margin)
+CoverType,chi-squared,0.7591729974161324,Zip Codes (Margin)
+SumInsured,t-test,0.9226991578460642,Zip Codes (Margin)
+VehicleType,chi-squared,0.21542056845777555,Gender
+RegistrationYear,t-test,0.5827265519600854,Gender
+CoverType,chi-squared,0.13645305220342724,Gender
+SumInsured,t-test,0.24553436528645686,Gender

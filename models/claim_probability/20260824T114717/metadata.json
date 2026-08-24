@@ -1,0 +1,51 @@
+{
+  "model_name": "claim_probability",
+  "version": "20260824T114717",
+  "created_at": "20260824T114717",
+  "metrics": {
+    "accuracy": 0.94375,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "roc_auc": 0.6949963208241353,
+    "cv_f1_mean": 0.0,
+    "cv_f1_std": 0.0
+  },
+  "params": {
+    "algorithm": "random_forest",
+    "target": "HasClaim",
+    "class_imbalance_strategy": "class_weight/scale_pos_weight"
+  },
+  "feature_columns": [
+    "RegistrationYear",
+    "Cylinders",
+    "CubicCapacity",
+    "Kilowatts",
+    "NumberOfDoors",
+    "SumInsured",
+    "CalculatedPremiumPerTerm",
+    "CapitalOutstanding",
+    "CustomValueEstimate",
+    "VehicleAge",
+    "IsNewVehicle",
+    "PremiumPerSumInsured",
+    "PostalCodeFrequency",
+    "Province_Free State",
+    "Province_Gauteng",
+    "Province_KwaZulu-Natal",
+    "Province_Limpopo",
+    "Province_Western Cape",
+    "VehicleType_Light Commercial Vehicle",
+    "VehicleType_Medium Commercial Vehicle",
+    "VehicleType_Passenger Vehicle",
+    "CoverType_Third Party",
+    "CoverType_Third Party Fire and Theft",
+    "Gender_Male",
+    "Gender_Not specified",
+    "Gender_Unknown",
+    "MaritalStatus_Single",
+    "MaritalStatus_Unknown"
+  ],
+  "framework": "scikit-learn",
+  "notes": "Full population; severe class imbalance -- see F1/precision, not accuracy."
+}
