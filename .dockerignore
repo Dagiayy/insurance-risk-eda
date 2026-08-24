@@ -1,0 +1,16 @@
+.git
+.github
+.venv
+venv
+__pycache__
+*.pyc
+.pytest_cache
+.ruff_cache
+.mypy_cache
+notebooks
+legacy
+tests
+*.egg-info
+data/*.txt
+data/*.txt.dvc
+.dvc/cache

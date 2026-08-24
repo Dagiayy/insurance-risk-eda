@@ -1,0 +1,46 @@
+{
+  "model_name": "claim_severity",
+  "version": "20260824T114717",
+  "created_at": "20260824T114717",
+  "metrics": {
+    "rmse": 1.4218788088557022,
+    "r2": -0.5586848193144875,
+    "mae": 1.2441265206411982
+  },
+  "params": {
+    "algorithm": "linear_regression",
+    "target": "log1p(TotalClaims)"
+  },
+  "feature_columns": [
+    "RegistrationYear",
+    "Cylinders",
+    "CubicCapacity",
+    "Kilowatts",
+    "NumberOfDoors",
+    "SumInsured",
+    "CalculatedPremiumPerTerm",
+    "CapitalOutstanding",
+    "CustomValueEstimate",
+    "VehicleAge",
+    "IsNewVehicle",
+    "PremiumPerSumInsured",
+    "PostalCodeFrequency",
+    "Province_Free State",
+    "Province_Gauteng",
+    "Province_KwaZulu-Natal",
+    "Province_Limpopo",
+    "Province_Western Cape",
+    "VehicleType_Light Commercial Vehicle",
+    "VehicleType_Medium Commercial Vehicle",
+    "VehicleType_Passenger Vehicle",
+    "CoverType_Third Party",
+    "CoverType_Third Party Fire and Theft",
+    "Gender_Male",
+    "Gender_Not specified",
+    "Gender_Unknown",
+    "MaritalStatus_Single",
+    "MaritalStatus_Unknown"
+  ],
+  "framework": "scikit-learn",
+  "notes": "Trained on claims-only subset (TotalClaims > 0)."
+}

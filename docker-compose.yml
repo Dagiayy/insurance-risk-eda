@@ -1,0 +1,22 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - LOG_LEVEL=INFO
+      - PRICING_EXPENSE_LOADING_PCT=0.10
+      - PRICING_PROFIT_MARGIN_PCT=0.15
+      # - ANTHROPIC_API_KEY=  # set to enable AI-narrated /insights/generate
+      # - API_KEY=            # set to require X-API-Key on predict/insights routes
+    volumes:
+      - ./models:/app/models       # trained models persist across container restarts
+      - ./data:/app/data:ro
+      - ./results:/app/results
+      - ./docs:/app/docs
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health').read()"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
